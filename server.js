@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const mainRouter = require('./router/main');
+const mainRouter = require("./router/main");
+const usersRouter = require("./router/users");
+const bodyParser = require("body-parser");
 const app = express();
+
 //const http = require("http");
 const port = 4000;
 
@@ -20,12 +23,10 @@ db.once("open", function () {
 	console.log("Connected!");
 });
 
+app.use(bodyParser.json());
 
-app.use('/main', mainRouter);
-
-// app.get("/", (req, res) => {
-// 	res.send("plzzzzzzzzz");
-// });
+app.use("/main", mainRouter);
+app.use("/users", usersRouter);
 
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);
