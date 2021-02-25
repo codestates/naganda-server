@@ -6,9 +6,7 @@ var schedule = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	hashtag: [
-		{ tagName: { type: String, required: true, trim: true }, _id: false },
-	],
+	hashtag: [{type: String, required: true, trim: true, _id: false}],
 	best: {
 		type: Number,
 		default: 0,
