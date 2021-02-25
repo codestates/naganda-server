@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const mainRouter = require("./router/main");
 const usersRouter = require("./router/users");
+const scheduleRouter = require("./router/schedule");
 const bodyParser = require("body-parser");
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 app.use("/main", mainRouter);
 app.use("/users", usersRouter);
+app.use("/schedule", scheduleRouter);
 
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);
