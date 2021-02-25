@@ -87,8 +87,8 @@ var schedule = new mongoose.Schema({
 	},
 });
 
-const usersModel = mongoose.model("user", users);
-const scheduleModel = mongoose.model("schedule", schedule);
+// const usersModel = mongoose.model("user", users);
+// const scheduleModel = mongoose.model("schedule", schedule);
 
 //! 회원 정보추가 샘플
 // const newUser = new usersModel({
