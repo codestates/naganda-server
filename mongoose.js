@@ -48,14 +48,19 @@ var schedule = new mongoose.Schema({
 		required: true,
 	},
 	hashtag: [{type: String, required: true, trim: true, _id: false}],
-	best: {
-		type: Number,
-		default: 0,
-	},
-	worst: {
-		type: Number,
-		default: 0,
-	},
+	bestWorst: [{
+		userInfo: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "user",
+		},
+		best: {
+			type: Number,
+		},
+		worst: {
+			type: Number,
+		},
+		_id: false
+	}],
 	detail: [
 		{
 			detailTitle: {
@@ -85,8 +90,8 @@ var schedule = new mongoose.Schema({
 	},
 });
 
-// const usersModel = mongoose.model("user", users);
-// const scheduleModel = mongoose.model("schedule", schedule);
+const usersModel = mongoose.model("user", users);
+const scheduleModel = mongoose.model("schedule", schedule);
 
 //! 회원 정보추가 샘플
 // const newUser = new usersModel({
@@ -99,7 +104,7 @@ var schedule = new mongoose.Schema({
 // const newSchedule = new scheduleModel({
 // 	thumbnail: [{ img: "food1.jpg" }, { img: "food2.jpg" }],
 // 	scheduleTitle: "역시 한식이 쵝오야",
-// 	hashtag: [{ tagName: "#서울" }, { tagName: "#맛집" }],
+// 	hashtag: ["#서울", "#맛집"],
 // 	detail: [
 // 		{
 // 			detailTitle: "잘 되어있니???",
@@ -109,7 +114,7 @@ var schedule = new mongoose.Schema({
 // 			position: "점심",
 // 		},
 // 	],
-// 	nickname: "6035b635c3b5c3a3d57b0d8d",
+// 	userInfo: "603864d9c564694e21a4e6bb",
 // });
 
 //! 회원 정보 추가한것 DB에 저장
@@ -154,6 +159,6 @@ var schedule = new mongoose.Schema({
 // 	});
 
 //! 특정 data값 불러와서 삭제하기
-// usersModel.deleteMany({ nickname: "psh" }, (err, data) => {
+// scheduleModel.deleteMany({ userInfo: "6035b635c3b5c3a3d57b0d8d" }, (err, data) => {
 // 	console.log(data);
 // });
