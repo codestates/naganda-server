@@ -7,14 +7,19 @@ var schedule = new mongoose.Schema({
 		required: true,
 	},
 	hashtag: [{type: String, required: true, trim: true, _id: false}],
-	best: {
-		type: Number,
-		default: 0,
-	},
-	worst: {
-		type: Number,
-		default: 0,
-	},
+	bestWorst: [{
+		userInfo: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "user",
+		},
+		best: {
+			type: Number,
+		},
+		worst: {
+			type: Number,
+		},
+		_id: false
+	}],
 	detail: [
 		{
 			detailTitle: {
