@@ -103,7 +103,7 @@ const scheduleModel = mongoose.model("schedule", schedule);
 //! 스케줄 추가 샘플
 // const newSchedule = new scheduleModel({
 // 	thumbnail: [{ img: "food1.jpg" }, { img: "food2.jpg" }],
-// 	scheduleTitle: "역시 한식이 쵝오야",
+// 	scheduleTitle: "역시 일식이 쵝오야",
 // 	hashtag: ["#서울", "#맛집"],
 // 	detail: [
 // 		{
@@ -159,7 +159,7 @@ const scheduleModel = mongoose.model("schedule", schedule);
 // 	});
 
 //! 특정 data값 불러와서 삭제하기
-// scheduleModel.deleteMany({ userInfo: "6035b635c3b5c3a3d57b0d8d" }, (err, data) => {
+// scheduleModel.deleteMany({ _id: "603879c3d1d0a662bc6d42d8" }, (err, data) => {
 // 	console.log(data);
 // });
 
