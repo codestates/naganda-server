@@ -162,3 +162,9 @@ const scheduleModel = mongoose.model("schedule", schedule);
 // scheduleModel.deleteMany({ userInfo: "6035b635c3b5c3a3d57b0d8d" }, (err, data) => {
 // 	console.log(data);
 // });
+
+// usersModel
+// 	.updateOne({ _id: "60370965f3382619ed31c4d4" }, { nickname: "김동동" })
+// 	.then((data) => {
+// 		console.log(data);
+// 	});
