@@ -47,7 +47,7 @@ var schedule = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	hashtag: [{type: String, required: true, trim: true, _id: false}],
+	hashtag: [{ type: String, required: true, trim: true, _id: false }],
 	best: {
 		type: Number,
 		default: 0,
@@ -85,8 +85,8 @@ var schedule = new mongoose.Schema({
 	},
 });
 
-// const usersModel = mongoose.model("user", users);
-// const scheduleModel = mongoose.model("schedule", schedule);
+const usersModel = mongoose.model("user", users);
+const scheduleModel = mongoose.model("schedule", schedule);
 
 //! 회원 정보추가 샘플
 // const newUser = new usersModel({
@@ -99,7 +99,7 @@ var schedule = new mongoose.Schema({
 // const newSchedule = new scheduleModel({
 // 	thumbnail: [{ img: "food1.jpg" }, { img: "food2.jpg" }],
 // 	scheduleTitle: "역시 한식이 쵝오야",
-// 	hashtag: [{ tagName: "#서울" }, { tagName: "#맛집" }],
+// 	hashtag: ["서울", "맛집", "배고파"],
 // 	detail: [
 // 		{
 // 			detailTitle: "잘 되어있니???",
@@ -109,7 +109,7 @@ var schedule = new mongoose.Schema({
 // 			position: "점심",
 // 		},
 // 	],
-// 	nickname: "6035b635c3b5c3a3d57b0d8d",
+// 	userInfo: "6035b635c3b5c3a3d57b0d8d",
 // });
 
 //! 회원 정보 추가한것 DB에 저장
@@ -157,3 +157,9 @@ var schedule = new mongoose.Schema({
 // usersModel.deleteMany({ nickname: "psh" }, (err, data) => {
 // 	console.log(data);
 // });
+
+// usersModel
+// 	.updateOne({ _id: "60370965f3382619ed31c4d4" }, { nickname: "김동동" })
+// 	.then((data) => {
+// 		console.log(data);
+// 	});
