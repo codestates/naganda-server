@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "mongoose": "nodemon mongoose.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express": "^4.17.1",
     "http": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.17",
     "morgan": "^1.10.0",
