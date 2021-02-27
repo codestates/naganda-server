@@ -97,8 +97,8 @@ const scheduleModel = mongoose.model("schedule", schedule);
 
 //! 회원 정보추가 샘플
 // const newUser = new usersModel({
-// 	nickname: "테스트씨",
-// 	email: "test@i.com",
+// 	nickname: "게스트",
+// 	email: "guest@i.com",
 // 	password: "1234",
 // });
 
@@ -107,6 +107,7 @@ const scheduleModel = mongoose.model("schedule", schedule);
 // 	thumbnail: [{ img: "food1.jpg" }, { img: "food2.jpg" }],
 // 	scheduleTitle: "역시 일식이 쵝오야",
 // 	hashtag: ["#서울", "#맛집"],
+// 	bestWorst: [{ userInfo: "603864d9c564694e21a4e6bb", best: 0, worst: 1 }],
 // 	detail: [
 // 		{
 // 			detailTitle: "잘 되어있니???",
@@ -116,7 +117,7 @@ const scheduleModel = mongoose.model("schedule", schedule);
 // 			position: "점심",
 // 		},
 // 	],
-// 	userInfo: "603864d9c564694e21a4e6bb",
+// 	userInfo: "6039ceed58ba2e1e4ef4f3a1",
 // });
 
 //! 회원 정보 추가한것 DB에 저장
