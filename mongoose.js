@@ -103,25 +103,21 @@ const scheduleModel = mongoose.model("schedule", schedule);
 // });
 
 //! 스케줄 추가 샘플
-const newSchedule = new scheduleModel({
-	thumbnail: [{ img: "food1.jpg" }, { img: "food2.jpg" }],
-	scheduleTitle: "이씨이씨이씨이씨",
-	hashtag: ["#서울", "#장소"],
-	bestWorst: [
-		{ userInfo: "6038abd9d1743a16adc10d9b", best: 0, worst: 1 },
-		{ userInfo: "60389dccf1c78713886f8d35", best: 1, worst: 0 },
-	],
-	detail: [
-		{
-			detailTitle: "testtest",
-			comment: "testtest",
-			time: "15:00",
-			place: "test",
-			position: "점심",
-		},
-	],
-	userInfo: "60389dbc19e9c1137bfb4b86",
-});
+// const newSchedule = new scheduleModel({
+// 	thumbnail: [{ img: "food1.jpg" }, { img: "food2.jpg" }],
+// 	scheduleTitle: "역시 일식이 쵝오야",
+// 	hashtag: ["#서울", "#맛집"],
+// 	detail: [
+// 		{
+// 			detailTitle: "잘 되어있니???",
+// 			comment: "철수랑 한솥데이트",
+// 			time: "13:30",
+// 			place: "한솥 서울지점",
+// 			position: "점심",
+// 		},
+// 	],
+// 	userInfo: "603864d9c564694e21a4e6bb",
+// });
 
 //! 회원 정보 추가한것 DB에 저장
 // newUser.save(function (err, data) {
@@ -134,13 +130,13 @@ const newSchedule = new scheduleModel({
 // });
 
 //! 스케줄 정보 추가한것 DB에 저장
-newSchedule.save(function (error) {
-	if (error) {
-		console.log(error);
-	} else {
-		console.log("Saved schedule!");
-	}
-});
+// newSchedule.save(function (error) {
+// 	if (error) {
+// 		console.log(error);
+// 	} else {
+// 		console.log("Saved schedule!");
+// 	}
+// });
 
 //! 특정 회원을 찾은 뒤에 변경한 내용 DB에 업데이트 하기
 // usersModel.find({ nickname: "psh" }, (err, data) => {
@@ -165,7 +161,7 @@ newSchedule.save(function (error) {
 // 	});
 
 //! 특정 data값 불러와서 삭제하기
-// scheduleModel.deleteMany({ userInfo: "6035b635c3b5c3a3d57b0d8d" }, (err, data) => {
+// scheduleModel.deleteMany({ _id: "603879c3d1d0a662bc6d42d8" }, (err, data) => {
 // 	console.log(data);
 // });
 
