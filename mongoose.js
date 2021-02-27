@@ -47,20 +47,22 @@ var schedule = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	hashtag: [{type: String, required: true, trim: true, _id: false}],
-	bestWorst: [{
-		userInfo: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "user",
+	hashtag: [{ type: String, required: true, trim: true, _id: false }],
+	bestWorst: [
+		{
+			userInfo: {
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "user",
+			},
+			best: {
+				type: Number,
+			},
+			worst: {
+				type: Number,
+			},
+			_id: false,
 		},
-		best: {
-			type: Number,
-		},
-		worst: {
-			type: Number,
-		},
-		_id: false
-	}],
+	],
 	detail: [
 		{
 			detailTitle: {
@@ -95,8 +97,8 @@ const scheduleModel = mongoose.model("schedule", schedule);
 
 //! 회원 정보추가 샘플
 // const newUser = new usersModel({
-// 	nickname: "psh1111",
-// 	email: "psh@i.com",
+// 	nickname: "테스트씨",
+// 	email: "test@i.com",
 // 	password: "1234",
 // });
 
@@ -168,3 +170,5 @@ const scheduleModel = mongoose.model("schedule", schedule);
 // 	.then((data) => {
 // 		console.log(data);
 // 	});
+
+//scheduleModel.updateMany({}, { $pull: { bestWorst: {userInfo: } } });
