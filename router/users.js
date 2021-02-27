@@ -2,7 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const { signup } = require("../controllers/main");
-const { myInformation, myScheduleInfo, removeSchedule, unregister } = require("../controllers/mypage");
+const {
+	myInformation,
+	myScheduleInfo,
+	removeSchedule,
+	unregister,
+	guestLogout,
+} = require("../controllers/mypage");
 
 //* POST /users/signup
 router.post("/signup", signup.post);
@@ -14,5 +20,7 @@ router.get("/schedules/:userid", myScheduleInfo.get);
 router.delete("/removeSchedules/:scheduleid", removeSchedule.delete);
 //* DELETE /users/delete/:userid
 router.delete("/delete/:userid", unregister.delete);
+//* POST /users/logout/:userid
+router.post("/logout/:userid", guestLogout.post);
 
 module.exports = router;
