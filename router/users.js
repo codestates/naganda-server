@@ -8,6 +8,7 @@ const {
 	removeSchedule,
 	unregister,
 	guestLogout,
+	updateUserInfo
 } = require("../controllers/mypage");
 
 //* POST /users/signup
@@ -22,5 +23,7 @@ router.delete("/removeSchedules/:scheduleid", removeSchedule.delete);
 router.delete("/delete/:userid", unregister.delete);
 //* POST /users/logout/:userid
 router.post("/logout/:userid", guestLogout.post);
+//* PATCH /users/updateUserinfo/:userid
+router.patch("/updateUserinfo/:userid", updateUserInfo.patch);
 
 module.exports = router;
