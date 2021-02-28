@@ -4,4 +4,5 @@ module.exports = {
 	myScheduleInfo: require("./myScheduleInfo"),
 	removeSchedule: require("./removeSchedule"),
 	guestLogout: require("./guestLogout"),
+	updateUserInfo: require("./updateUserInfo")
 };
