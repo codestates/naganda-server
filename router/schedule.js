@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { upload } = require('./multer');
 
 const { oneSchedule, bookmark, bestworst, modify, save } = require("../controllers/schedule");
 
@@ -10,8 +11,8 @@ router.get("/:scheduleid", oneSchedule.get);
 //* PATCH /schedule/bestworst/:scheduleid
 router.post("/bestworst/:scheduleid", bestworst.post);
 //* PUT /schedule/modify/:scheduleid
-router.put("/modify/:scheduleid", modify.put);
+router.put("/modify/:scheduleid", upload.array('img', 3), modify.put);
 //* POST /schedule/save
-router.post("/save", save.post);
+router.post("/save", upload.array('img', 3), save.post);
 
 module.exports = router;

@@ -1,19 +1,30 @@
 const scheduleModel = require("../../models/schedule");
+const { s3 } = require("../../router/multer");
 
 module.exports = {
 	put: async (req, res) => {
-		console.log(req.body);
 		try {
 			let findSchedule = await scheduleModel.findOne({
 				_id: req.params.scheduleid,
 			});
-
+			let oldImg = findSchedule.thumbnail.map(item => { return {Key: item.img}});
+			var params = {
+				Bucket: "naganda", 
+				Delete: {
+					Objects: oldImg, 
+					Quiet: false
+				}
+			};
+			s3.deleteObjects(params, function(err) {
+				console.log(err)
+			});
+			let item = req.files.map(file => {return {img: file.key}});
 			await scheduleModel.replaceOne(
 				{
 					_id: req.params.scheduleid,
 				},
 				{
-					thumbnail: req.body.thumbnail,
+					thumbnail: item,
 					scheduleTitle: req.body.scheduleTitle,
 					hashtag: req.body.hashtag,
 					detail: req.body.detail,

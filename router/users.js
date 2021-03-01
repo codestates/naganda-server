@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { upload } = require('./multer');
 
 const { signup } = require("../controllers/main");
 const {
@@ -24,6 +25,6 @@ router.delete("/delete/:userid", unregister.delete);
 //* POST /users/logout/:userid
 router.post("/logout/:userid", guestLogout.post);
 //* PATCH /users/updateUserinfo/:userid
-router.patch("/updateUserinfo/:userid", updateUserInfo.patch);
+router.patch("/updateUserinfo/:userid", upload.single('img'), updateUserInfo.patch);
 
 module.exports = router;
