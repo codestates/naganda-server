@@ -18,6 +18,9 @@ var users = new mongoose.Schema({
 		validate: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
 	},
 	avatar: "string",
+	refreshToken: {
+		type: String,
+	},
 });
 
 module.exports = mongoose.model("user", users);
