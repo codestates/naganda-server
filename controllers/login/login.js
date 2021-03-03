@@ -42,8 +42,13 @@ module.exports = {
 					else {
 						return res
 							.set("Refresh-Token", refreshToken)
+							.set("Access-Control-Expose-Headers", "Refresh-Token")
 							.status(200)
-							.json({ accessToken: accessToken, message: "Login success!" });
+							.json({
+								headers: { refreshToken: refreshToken },
+								accessToken: accessToken,
+								message: "Login success!",
+							});
 					}
 				}
 			);
