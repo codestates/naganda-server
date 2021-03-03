@@ -5,7 +5,7 @@ const usersRouter = require("./router/users");
 const scheduleRouter = require("./router/schedule");
 const bodyParser = require("body-parser");
 const app = express();
-
+const cors = require("cors");
 //const http = require("http");
 const port = 4000;
 
@@ -23,7 +23,12 @@ db.on("error", function () {
 db.once("open", function () {
 	console.log("Connected!");
 });
-
+app.use(
+	cors({
+		origin: true,
+		credentials: true,
+	})
+);
 app.use(bodyParser.json());
 
 app.use("/main", mainRouter);
