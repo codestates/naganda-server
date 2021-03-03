@@ -23,7 +23,7 @@ router.post("/signup", signup.post);
 //* GET /users/myinfo
 router.get("/myinfo", auth, myInformation.get);
 //* GET /users/schedules
-router.get("/schedules/", auth, myScheduleInfo.get);
+router.get("/schedules", auth, myScheduleInfo.get);
 //* DELETE /users/removeSchedules/:scheduleid
 router.delete("/removeSchedules/:scheduleid", auth, removeSchedule.delete);
 //* DELETE /users/delete
