@@ -20,14 +20,14 @@ router.post("/login", login.post);
 router.post("/guest", guestLogin.post);
 //* POST /users/signup
 router.post("/signup", signup.post);
-//* GET /users/:userid
-router.get("/:userid", auth, myInformation.get);
-//* GET /users/schedules/:userid
-router.get("/schedules/:userid", auth, myScheduleInfo.get);
+//* GET /users
+router.get("/myinfo", auth, myInformation.get);
+//* GET /users/schedules
+router.get("/schedules", auth, myScheduleInfo.get);
 //* DELETE /users/removeSchedules/:scheduleid
 router.delete("/removeSchedules/:scheduleid", auth, removeSchedule.delete);
-//* DELETE /users/delete/:userid
-router.delete("/delete/:userid", auth, unregister.delete);
+//* DELETE /users/delete
+router.delete("/delete", auth, unregister.delete);
 //* POST /users/logout/:userid
 router.post("/logout/:userid", auth, guestLogout.post);
 //* PATCH /users/updateUserinfo/:userid
