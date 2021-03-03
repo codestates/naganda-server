@@ -20,7 +20,7 @@ router.post("/login", login.post);
 router.post("/guest", guestLogin.post);
 //* POST /users/signup
 router.post("/signup", signup.post);
-//* GET /users
+//* GET /users/myinfo
 router.get("/myinfo", auth, myInformation.get);
 //* GET /users/schedules
 router.get("/schedules", auth, myScheduleInfo.get);
@@ -28,11 +28,11 @@ router.get("/schedules", auth, myScheduleInfo.get);
 router.delete("/removeSchedules/:scheduleid", auth, removeSchedule.delete);
 //* DELETE /users/delete
 router.delete("/delete", auth, unregister.delete);
-//* POST /users/logout/:userid
-router.post("/logout/:userid", auth, guestLogout.post);
-//* PATCH /users/updateUserinfo/:userid
+//* POST /users/logout
+router.post("/logout", auth, guestLogout.post);
+//* PATCH /users/updateUserinfo
 router.patch(
-	"/updateUserinfo/:userid",
+	"/updateUserinfo",
 	auth,
 	upload.single("img"),
 	updateUserInfo.patch
