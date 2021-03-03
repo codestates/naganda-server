@@ -3,8 +3,8 @@ require("dotenv").config();
 
 module.exports = (req, res, next) => {
 	// 1) 만약에 req.headers.authorization에 값이 있는지 유무를 확인한다.
-	if (req.headers.authorization) {
-		const token = req.headers.authorization.split(" ")[1];
+	if (req.body.headers.authorization) {
+		const token = req.body.headers.authorization.split(" ")[1];
 		jwt.verify(token, process.env.JWT_ACESS_SECRET, (err) => {
 			if (err) {
 				return res.status(401).json({ error: "접근 권한 업음" });
