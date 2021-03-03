@@ -1,14 +1,46 @@
 const usersModel = require("../../models/user");
 const scheduleModel = require("../../models/schedule");
+const jwt_decode = require("jwt-decode");
+const { s3 } = require("../../router/multer");
 
 module.exports = {
 	post: async (req, res) => {
-		//! 인증은 아직 안함
 		try {
-			const jwt_decode = require("jwt-decode");
 			const token = req.headers.authorization.split(" ")[1];
 			var decoded = jwt_decode(token);
-
+			//! 스케줄 All 썸네일 버킷 삭제
+			let findSchedule = await scheduleModel.findAll({
+				userInfo: decoded._id,
+			});
+			let allSchedule = findSchedule.map(data => {return data.thumbnail})
+			let filterImg = allSchedule.map(arr => {return arr.map(thumbnail => {return thumbnail.img})})
+			let oldImg = filterImg.reduce((a,b) => {return a.concat(b)},[]);
+			let result = oldImg.map(el => {return {Key : el}});
+			var params = {
+				Bucket: "naganda", 
+				Delete: {
+					Objects: result, 
+					Quiet: false
+				}
+			};
+			s3.deleteObjects(params, function(err) {
+				console.log(err)
+			});
+			//! 유저 아바타 버킷 삭제
+			usersModel.findOne({ _id: decoded._id }, (err, data) => {
+				if (data.avatar) {
+					let avatar = data.avatar;
+					s3.deleteObject(
+						{
+							Bucket: "naganda",
+							Key: avatar,
+						},
+						function (err) {
+							console.log(err);
+						}
+					);
+				}
+			})
 			await scheduleModel.remove({ userInfo: decoded._id });
 			await scheduleModel.updateMany(
 				{},
