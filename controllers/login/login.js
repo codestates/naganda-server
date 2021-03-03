@@ -45,7 +45,6 @@ module.exports = {
 							.set("Access-Control-Expose-Headers", "Refresh-Token")
 							.status(200)
 							.json({
-								headers: { refreshToken: refreshToken },
 								accessToken: accessToken,
 								message: "Login success!",
 							});
