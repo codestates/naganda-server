@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require("./auth");
 const { upload } = require("./multer");
 
-const { login, guestLogin } = require("../controllers/login");
+const { login, guestLogin, kakao } = require("../controllers/login");
 const { signup } = require("../controllers/main");
 const {
 	myInformation,
@@ -14,6 +14,8 @@ const {
 	updateUserInfo,
 } = require("../controllers/mypage");
 
+//* POST /users/kakao
+router.post("/kakao", kakao.post);
 //* POST /users/login
 router.post("/login", login.post);
 //* POST /users/guest
