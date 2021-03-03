@@ -6,7 +6,7 @@ const { s3 } = require("../../router/multer");
 module.exports = {
 	post: async (req, res) => {
 		try {
-			const token = req.headers.authorization.split(" ")[1];
+			const token = req.body.headers.authorization.split(" ")[1];
 			var decoded = jwt_decode(token);
 			//! 스케줄 All 썸네일 버킷 삭제
 			let findSchedule = await scheduleModel.findAll({
@@ -58,12 +58,10 @@ module.exports = {
 				{ $pull: { bestWorst: { userInfo: decoded._id } } }
 			);
 			await usersModel.remove({ _id: decoded._id });
-			return res
-				.status(200)
-				.json({
-					email: findInfo.email,
-					message: "게스트 로그아웃이 정상적으로 처리되었습니다",
-				});
+			return res.status(200).json({
+				email: findInfo.email,
+				message: "게스트 로그아웃이 정상적으로 처리되었습니다",
+			});
 		} catch (err) {
 			console.log(err);
 			return res.status(500).json(err);
