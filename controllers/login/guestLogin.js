@@ -31,10 +31,14 @@ module.exports = {
 				(err) => {
 					if (err) console.log(err);
 					else {
-						return res.set("Refresh-Token", refreshToken).status(200).json({
-							accessToken: accessToken,
-							message: "Guest Login success!",
-						});
+						return res
+							.set("Refresh-Token", refreshToken)
+							.set("Access-Control-Expose-Headers", "Refresh-Token")
+							.status(200)
+							.json({
+								accessToken: accessToken,
+								message: "Guest Login success!",
+							});
 					}
 				}
 			);
