@@ -6,7 +6,7 @@ const { s3 } = require("../../router/multer");
 module.exports = {
 	post: async (req, res) => {
 		try {
-			const token = req.body.headers.authorization.split(" ")[1];
+			const token = req.headers.authorization.split(" ")[1];
 			var decoded = jwt_decode(token);
 			//! 스케줄 All 썸네일 버킷 삭제
 			let findSchedule = await scheduleModel.findAll({
