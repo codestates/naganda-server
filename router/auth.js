@@ -11,9 +11,7 @@ module.exports = (req, res, next) => {
 				jwt.verify(token, process.env.JWT_REFRESH_SECRET, (err, data) => {
 					if (err) {
 						//? 말도안되는 뚱딴지 토큰을 가져왔을 경우 접근 불가
-						return res
-							.status(401)
-							.json({ message: "우리가 만든 토큰이 아닙니다" });
+						return res.status(401).json({ message: "토큰이 만료되었습니다" });
 					} else {
 						//? refreshToken이 증명되었을 경우
 						//! 갱신조건 충족시 갱신 후 next (accessToken 갱신하기)

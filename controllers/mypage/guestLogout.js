@@ -10,49 +10,46 @@ module.exports = {
 			const token = req.headers.authorization.split(" ")[1];
 			var decoded = jwt_decode(token);
 			//! 스케줄 All 썸네일 버킷 삭제
-			// let findSchedule = await scheduleModel.findAll({
-			// 	userInfo: decoded._id,
-			// });
-			// let allSchedule = findSchedule.map((data) => {
-			// 	return data.thumbnail;
-			// });
-			// let filterImg = allSchedule.map((arr) => {
-			// 	return arr.map((thumbnail) => {
-			// 		return thumbnail.img;
-			// 	});
-			// });
-			// let oldImg = filterImg.reduce((a, b) => {
-			// 	return a.concat(b);
-			// }, []);
-			// let result = oldImg.map((el) => {
-			// 	return { Key: el };
-			// });
-			// var params = {
-			// 	Bucket: "naganda",
-			// 	Delete: {
-			// 		Objects: result,
-			// 		Quiet: false,
-			// 	},
-			// };
-			// s3.deleteObjects(params, function (err) {
-			// 	console.log(err);
-			// });
-			// //! 유저 아바타 버킷 삭제
+			let findSchedule = await scheduleModel.find({
+				userInfo: decoded._id,
+			});
+			let allSchedule = findSchedule.map((data) => data.thumbnail);
+			let filterImg = allSchedule.map((arr) => {
+				return arr.map((thumbnail) => thumbnail.img);
+			});
+			let oldImg = filterImg.reduce((a, b) => {
+				return a.concat(b);
+			}, []);
+			let result = oldImg.map((el) => {
+				return { Key: el };
+			});
+			console.log(result);
+			var params = {
+				Bucket: "naganda",
+				Delete: {
+					Objects: result,
+					Quiet: false,
+				},
+			};
+			s3.deleteObjects(params, function (err) {
+				console.log(err);
+			});
+			//! 유저 아바타 버킷 삭제
 			let findInfo = await usersModel.findOne({ _id: decoded._id });
-			// await usersModel.findOne({ _id: decoded._id }, (err, data) => {
-			// 	if (data.avatar) {
-			// 		let avatar = data.avatar;
-			// 		s3.deleteObject(
-			// 			{
-			// 				Bucket: "naganda",
-			// 				Key: avatar,
-			// 			},
-			// 			function (err) {
-			// 				console.log(err);
-			// 			}
-			// 		);
-			// 	}
-			// });
+			await usersModel.findOne({ _id: decoded._id }, (err, data) => {
+				if (data.avatar) {
+					let avatar = data.avatar;
+					s3.deleteObject(
+						{
+							Bucket: "naganda",
+							Key: avatar,
+						},
+						function (err) {
+							console.log(err);
+						}
+					);
+				}
+			});
 			await scheduleModel.remove({ userInfo: decoded._id });
 			await scheduleModel.updateMany(
 				{},
