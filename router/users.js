@@ -31,7 +31,7 @@ router.delete("/removeSchedules/:scheduleid", auth, removeSchedule.delete);
 //* DELETE /users/delete
 router.delete("/delete", auth, unregister.delete);
 //* POST /users/logout
-router.post("/logout", auth, guestLogout.post);
+router.delete("/logout", auth, guestLogout.delete);
 //* PATCH /users/updateUserinfo
 router.patch(
 	"/updateUserinfo",
