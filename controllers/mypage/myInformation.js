@@ -1,5 +1,5 @@
 const usersModel = require("../../models/user");
-const jwt_decode = require('jwt-decode'); 
+const jwt_decode = require("jwt-decode");
 
 module.exports = {
 	get: async (req, res) => {
