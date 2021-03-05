@@ -8,8 +8,9 @@ const app = express();
 const cors = require("cors");
 //const http = require("http");
 const port = 4000;
+const atlas = process.env.ATLAS_URI;
 
-mongoose.connect("mongodb://localhost:27017/naganda", {
+mongoose.connect(atlas, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
