@@ -8,7 +8,7 @@ const qs = require("qs");
 
 module.exports = {
 	post: async (req, res) => {
-		const { code } = req.query;
+		const { code } = req.body.authorizationCode;
 		axios({
 			method: "POST",
 			url: `https://kauth.kakao.com/oauth/token`,
@@ -19,7 +19,7 @@ module.exports = {
 				grant_type: "authorization_code",
 				client_id: clientID,
 				client_secret: clientSecret,
-				redirect_uri: "http://localhost:3000/login",
+				redirect_uri: "http://localhost:3000/signin",
 				code: code,
 			}),
 		})
