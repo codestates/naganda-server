@@ -69,6 +69,7 @@ module.exports = {
 						email: res2.data.kakao_account.email,
 						password: `kakao${res2.data.id}`,
 						nickname: res2.data.properties.nickname,
+						avatar: res2.data.properties.profile_image
 					});
 					await newUser.save();
 					const findUser = await usersModel.findOne({
