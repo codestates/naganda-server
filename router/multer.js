@@ -15,7 +15,7 @@ const upload = multer({
     storage: multerS3({ 
         s3: s3,
         //버킷이름
-        bucket: 'naganda',
+        bucket: 'naganda.tk',
         // 자동으로 콘텐츠 타입 세팅
         contentType: multerS3.AUTO_CONTENT_TYPE, 
         // 클라이언트에서 자유롭게 가용하기 위함
