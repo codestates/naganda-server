@@ -8,7 +8,7 @@ const qs = require("qs");
 
 module.exports = {
 	post: async (req, res) => {
-		const { code } = req.body.authorizationCode;
+		const code = req.body.authorizationCode;
 		axios({
 			method: "POST",
 			url: `https://kauth.kakao.com/oauth/token`,
