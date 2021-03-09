@@ -19,7 +19,7 @@ module.exports = {
 				grant_type: "authorization_code",
 				client_id: clientID,
 				client_secret: clientSecret,
-				redirect_uri: "http://localhost:3000/signin",
+				redirect_uri: "http://naganda.tk/signin",
 				code: code,
 			}),
 		})
@@ -69,7 +69,7 @@ module.exports = {
 						email: res2.data.kakao_account.email,
 						password: `kakao${res2.data.id}`,
 						nickname: res2.data.properties.nickname,
-						avatar: res2.data.properties.profile_image
+						avatar: res2.data.properties.profile_image,
 					});
 					await newUser.save();
 					const findUser = await usersModel.findOne({
