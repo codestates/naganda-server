@@ -26,7 +26,7 @@ db.once("open", function () {
 });
 app.use(
 	cors({
-		origin: 'http://naganda.tk',
+		origin: true,
 		credentials: true,
 	})
 );
