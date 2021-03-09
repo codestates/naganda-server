@@ -26,7 +26,7 @@ db.once("open", function () {
 });
 app.use(
 	cors({
-		origin: true,
+		origin: 'http://naganda.tk',
 		credentials: true,
 	})
 );
@@ -37,5 +37,5 @@ app.use("/users", usersRouter);
 app.use("/schedule", scheduleRouter);
 
 app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`);
+	console.log(`Example app listening at http://naganda.tk:${port}`);
 });
