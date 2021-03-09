@@ -36,6 +36,10 @@ app.use("/main", mainRouter);
 app.use("/users", usersRouter);
 app.use("/schedule", scheduleRouter);
 
+app.get("/", (req, res) => {
+	console.log("연결이 되었구나!");
+});
+
 app.listen(port, () => {
 	console.log(`Example app listening at http://naganda.tk:${port}`);
 });
