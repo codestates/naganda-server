@@ -14,7 +14,7 @@ module.exports = {
 						let avatar = data.avatar;
 						s3.deleteObject(
 							{
-								Bucket: "naganda",
+								Bucket: "naganda.tk",
 								Key: avatar,
 							},
 							function (err) {

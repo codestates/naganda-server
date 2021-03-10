@@ -7,27 +7,23 @@ module.exports = {
 			let findSchedule = await scheduleModel.findOne({
 				_id: req.params.scheduleid,
 			});
-			let oldImg = findSchedule.thumbnail.map(item => { return {Key: item.img}});
-			var params = {
-				Bucket: "naganda", 
-				Delete: {
-					Objects: oldImg, 
-					Quiet: false
-				}
-			};
-			s3.deleteObjects(params, function(err) {
-				console.log(err)
-			});
-			let item = req.files.map(file => {return {img: file.key}});
+			let imgName = findSchedule.thumbnail.split("/");
+			if (findSchedule.thumbnail) {
+				s3.deleteObject(
+					{ Bucket: "naganda.tk", Key: imgName[imgName.length - 1] },
+					(err) => {
+						console.log(err);
+					}
+				);
+			}
 			await scheduleModel.replaceOne(
 				{
 					_id: req.params.scheduleid,
 				},
 				{
-					thumbnail: item,
+					thumbnail: req.file.location,
 					scheduleTitle: req.body.scheduleTitle,
 					hashtag: req.body.hashtag,
-					detail: req.body.detail,
 					userInfo: findSchedule.userInfo,
 				}
 			);
