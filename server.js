@@ -38,7 +38,6 @@ app.use("/schedule", scheduleRouter);
 
 app.get("/", (req, res) => {
 	res.json({ message: "연결이 되었구나!" });
-	console.log("연결이 되었구나!");
 });
 
 app.listen(port, () => {
