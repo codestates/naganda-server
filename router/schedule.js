@@ -7,8 +7,10 @@ const {
 	oneSchedule,
 	bookmark,
 	bestworst,
-	modify,
-	save,
+	modifyHead,
+	modifyBody,
+	saveHead,
+	saveBody,
 } = require("../controllers/schedule");
 
 //* POST /schedule/bookmark/:scheduleid
@@ -17,9 +19,25 @@ router.post("/bookmark/:scheduleid", auth, bookmark.post);
 router.get("/:scheduleid", oneSchedule.get);
 //* PATCH /schedule/bestworst/:scheduleid
 router.post("/bestworst/:scheduleid", auth, bestworst.post);
-//* PUT /schedule/modify/:scheduleid
-router.put("/modify/:scheduleid", auth, upload.array("img", 3), modify.put);
-//* POST /schedule/save
-router.post("/save", auth, upload.array("img", 3), save.post);
+//* PUT /schedule/modifyHead/:scheduleid
+router.put(
+	"/modifyHead/:scheduleid",
+	auth,
+	upload.single("img"),
+	modifyHead.put
+);
+//* PUT /schedule/modifyBody/:scheduleid
+router.put("/modifybody/:scheduleid", auth, modifyBody.put);
+//* POST /schedule/saveHead
+router.post("/saveHead", auth, upload.single("img"), saveHead.post);
+//* POST /schedule/saveBody
+router.post("/saveBody", auth, saveBody.post);
 
 module.exports = router;
+
+/**
+ * 1. modifyHead
+ * 2. modifyBody
+ * 3. saveHead
+ * 4. saveBody
+ */
