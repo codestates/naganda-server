@@ -19,7 +19,7 @@ module.exports = {
 				grant_type: "authorization_code",
 				client_id: clientID,
 				client_secret: clientSecret,
-				redirect_uri: "http://naganda.tk/signin",
+				redirect_uri: "https://naganda.tk/signin",
 				code: code,
 			}),
 		})
