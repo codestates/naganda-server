@@ -27,7 +27,7 @@ module.exports = {
 					userInfo: findSchedule.userInfo,
 				}
 			);
-			return res.status(200).json({ id: findSchedule.userInfo });
+			return res.status(200).json({ id: findSchedule._id });
 		} catch (err) {
 			return res.status(500).json(err);
 		}
