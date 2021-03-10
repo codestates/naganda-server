@@ -22,56 +22,17 @@ var schedule = new mongoose.Schema({
 			_id: false,
 		},
 	],
-	detail: {
-		am: [
-			{
-				detailTitle: {
-					type: String,
-				},
-				comment: "string",
-				time: {
-					type: String,
-				},
-				place: "string",
-			},
-		],
-		pm: [
-			{
-				detailTitle: {
-					type: String,
-				},
-				comment: "string",
-				time: {
-					type: String,
-				},
-				place: "string",
-			},
-		],
-		mid: [
-			{
-				detailTitle: {
-					type: String,
-				},
-				comment: "string",
-				time: {
-					type: String,
-				},
-				place: "string",
-			},
-		],
-		empty: [
-			{
-				detailTitle: {
-					type: String,
-				},
-				comment: "string",
-				time: {
-					type: String,
-				},
-				place: "string",
-			},
-		],
-	},
+	detail: [{
+		detailTitle: {
+			type: String,
+		},
+		comment: "string",
+		time: {
+			type: String,
+		},
+		place: "string",
+		position: "string"
+	}],
 	bookmark: {
 		type: Boolean,
 		default: false,
