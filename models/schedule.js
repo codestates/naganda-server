@@ -40,7 +40,7 @@ var schedule = new mongoose.Schema({
 	userInfo: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "user",
-		//required: true,
+		required: true,
 	},
 });
 
