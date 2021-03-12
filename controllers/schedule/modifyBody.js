@@ -17,7 +17,7 @@ module.exports = {
 			);
 			return res
 				.status(200)
-				.json({ id: req.params.scheduleid, message: "스케줄 내용이 잘 변경되었습니다" });
+				.json({ id: req.params.scheduleid, message: "스케줄 body 내용이 잘 변경되었습니다" });
 		} catch (err) {
 			return res.status(500).json(err);
 		}
