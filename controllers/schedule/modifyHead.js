@@ -27,7 +27,7 @@ module.exports = {
 					userInfo: findSchedule.userInfo,
 				}
 			);
-			return res.status(200).json({ id: findSchedule._id });
+			return res.status(200).json({ id: findSchedule._id, message: "스케줄 head 내용이 잘 변경되었습니다" });
 		} catch (err) {
 			return res.status(500).json(err);
 		}
