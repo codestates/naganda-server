@@ -14,10 +14,7 @@ module.exports = {
 				userInfo: decoded._id,
 			});
 			let allSchedule = findSchedule.map((data) => data.thumbnail);
-			let filterImg = allSchedule.map((arr) => {
-				return arr.map((thumbnail) => thumbnail.img);
-			});
-			let oldImg = filterImg.reduce((a, b) => {
+			let oldImg = allSchedule.reduce((a, b) => {
 				return a.concat(b);
 			}, []);
 			let result = oldImg.map((el) => {
@@ -25,7 +22,7 @@ module.exports = {
 			});
 			console.log(result);
 			var params = {
-				Bucket: "naganda",
+				Bucket: "naganda.tk",
 				Delete: {
 					Objects: result,
 					Quiet: false,
@@ -41,7 +38,7 @@ module.exports = {
 					let avatar = data.avatar;
 					s3.deleteObject(
 						{
-							Bucket: "naganda",
+							Bucket: "naganda.tk",
 							Key: avatar,
 						},
 						function (err) {

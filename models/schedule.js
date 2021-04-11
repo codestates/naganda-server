@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 var schedule = new mongoose.Schema({
 	thumbnail: { type: String },
 	scheduleTitle: {
-		type: String,
-		required: true,
+		type: String
 	},
 	hashtag: [{ type: String, required: true, trim: true, _id: false }],
 	bestWorst: [
