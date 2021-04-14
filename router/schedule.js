@@ -17,8 +17,8 @@ router.post("/bookmark/:scheduleid", auth, bookmark.post);
 router.get("/:scheduleid", oneSchedule.get);
 //* PATCH /schedule/bestworst/:scheduleid
 router.post("/bestworst/:scheduleid", auth, bestworst.post);
-//* PUT /schedule/modify/:scheduleid
-router.put("/modify/:scheduleid", auth, upload.single("img"), modify.put);
+//* PATCH /schedule/modify/:scheduleid
+router.patch("/modify/:scheduleid", auth, upload.single("img"), modify.patch);
 //* POST /schedule/save
 router.post("/save", auth, upload.single("img"), save.post);
 
