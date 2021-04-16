@@ -4,7 +4,6 @@ var schedule = new mongoose.Schema({
 	thumbnail: { type: String },
 	scheduleTitle: {
 		type: String,
-		required: true,
 	},
 	hashtag: [{ type: String, required: true, trim: true, _id: false }],
 	bestWorst: [
@@ -22,17 +21,21 @@ var schedule = new mongoose.Schema({
 			_id: false,
 		},
 	],
-	detail: [{
-		detailTitle: {
-			type: String,
+	detail: [
+		{
+			detailTitle: {
+				type: String,
+			},
+			comment: "string",
+			time: {
+				type: String,
+			},
+			place: "string",
+			position: "string",
+			positionId: "string",
+			cardsId: "string",
 		},
-		comment: "string",
-		time: {
-			type: String,
-		},
-		place: "string",
-		position: "string"
-	}],
+	],
 	bookmark: {
 		type: Boolean,
 		default: false,
